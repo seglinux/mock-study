@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      type="text/javascript"
+      src="http://mockjs.com/dist/mock.js"
+    ></script>
+  </head>
+  <body>
+    <img
+      id="myImage"
+      src="http://dummyimage.com/140x140/c09ace&text=同学律选。"
+      alt="Old Image"
+    />
+    <div id="text">我的</div>
+    <script type="module">
+      const { Random } = Mock;
+      
+      const imgElement = document.getElementById("myImage");
+      const divElement = document.getElementById("text");
+
+      setInterval(()=>{
+        const a =
+        "#" +
+        Random.integer(180, 255).toString(16) +
+        Random.integer(140, 255).toString(16) +
+        Random.integer(120, 220).toString(16);
+        const imageUrl = Random.image("140x140", a, "同学" + Random.csentence(2));
+        imgElement.src = imageUrl;
+        divElement.textContent=Random.csentence(2)
+      },800)
+    </script>
+  </body>
+</html>
